@@ -133,49 +133,6 @@ class IntroPage extends HookConsumerWidget with PresLogger {
         e,
       );
     }
-
-    try {
-      final DioHttpClient client = DioHttpClient(
-        timeout: const Duration(seconds: 2),
-        userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0",
-        debug: true,
-      );
-      final response = await client.get<Map<String, dynamic>>('https://api.ip.sb/geoip/');
-
-      if (response.statusCode == 200) {
-        final jsonData = response.data!;
-        final regionLocale = _getRegionLocale(jsonData['country_code']?.toString() ?? "");
-
-        loggy.debug(
-          'Region: ${regionLocale.region} Locale: ${regionLocale.locale}',
-        );
-        await ref.read(ConfigOptions.region.notifier).update(regionLocale.region);
-        await ref.read(localePreferencesProvider.notifier).changeLocale(regionLocale.locale);
-      } else {
-        loggy.warning('Request failed with status: ${response.statusCode}');
-      }
-    } catch (e) {
-      loggy.warning('Could not get the local country code from ip');
-    }
-  }
-
-  RegionLocale _getRegionLocale(String country) {
-    switch (country.toUpperCase()) {
-      case "IR":
-        return RegionLocale(Region.ir, AppLocale.fa);
-      case "CN":
-        return RegionLocale(Region.cn, AppLocale.zhCn);
-      case "RU":
-        return RegionLocale(Region.ru, AppLocale.ru);
-      case "AF":
-        return RegionLocale(Region.af, AppLocale.fa);
-      case "BR":
-        return RegionLocale(Region.other, AppLocale.ptBr);
-      case "TR":
-        return RegionLocale(Region.other, AppLocale.tr);
-      default:
-        return RegionLocale(Region.other, AppLocale.en);
-    }
   }
 }
 
