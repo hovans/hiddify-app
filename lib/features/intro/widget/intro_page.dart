@@ -52,11 +52,11 @@ class IntroPage extends HookConsumerWidget with PresLogger {
               maxCrossAxisExtent: 368,
               child: MultiSliver(
                 children: [
-                  const LocalePrefTile(),
-                  const SliverGap(4),
-                  const RegionPrefTile(),
-                  const SliverGap(4),
-                  const EnableAnalyticsPrefTile(),
+                  //const LocalePrefTile(),
+                  //const SliverGap(4),
+                  //const RegionPrefTile(),
+                  //const SliverGap(4),
+                  //const EnableAnalyticsPrefTile(),
                   const SliverGap(4),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -118,11 +118,11 @@ class IntroPage extends HookConsumerWidget with PresLogger {
 
   Future<void> autoSelectRegion(WidgetRef ref) async {
     try {
-      final countryCode = await TimeZoneToCountry.getLocalCountryCode();
-      final regionLocale = _getRegionLocale(countryCode);
-      loggy.debug(
-        'Timezone Region: ${regionLocale.region} Locale: ${regionLocale.locale}',
-      );
+      //final countryCode = await TimeZoneToCountry.getLocalCountryCode();
+      final regionLocale = RegionLocale(Region.cn, AppLocale.zhCn);
+      // loggy.debug(
+      //   'Timezone Region: ${regionLocale.region} Locale: ${regionLocale.locale}',
+      // );
       await ref.read(ConfigOptions.region.notifier).update(regionLocale.region);
       await ref.watch(ConfigOptions.directDnsAddress.notifier).reset();
       await ref.read(localePreferencesProvider.notifier).changeLocale(regionLocale.locale);

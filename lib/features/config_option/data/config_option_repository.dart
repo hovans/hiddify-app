@@ -27,7 +27,7 @@ abstract class ConfigOptions {
 
   static final region = PreferencesNotifier.create<Region, String>(
     "region",
-    Region.other,
+    Region.cn,
     mapFrom: Region.values.byName,
     mapTo: (value) => value.name,
   );
@@ -84,19 +84,14 @@ abstract class ConfigOptions {
 
   static final directDnsAddress = PreferencesNotifier.create<String, String>(
     "direct-dns-address",
-    "udp://1.1.1.1",
+    "udp://119.29.29.29",
     possibleValues: List.of([
       "local",
       "udp://223.5.5.5",
-      "udp://1.1.1.1",
-      "udp://1.1.1.2",
-      "tcp://1.1.1.1",
-      "https://1.1.1.1/dns-query",
+      "udp://119.29.29.29",
       "https://sky.rethinkdns.com/dns-query",
-      "4.4.2.2",
-      "8.8.8.8",
     ]),
-    defaultValueFunction: (ref) => ref.read(region) == Region.cn ? "223.5.5.5" : "1.1.1.1",
+    defaultValueFunction: (ref) => "223.5.5.5",
     validator: (value) => value.isNotBlank,
   );
 
