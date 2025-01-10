@@ -61,14 +61,14 @@ GlobalKey<NavigatorState>? _dynamicRootKey = useMobileRouter ? rootNavigatorKey 
             ),
           ],
         ),
-        TypedGoRoute<LogsOverviewRoute>(
-          path: "logs",
-          name: LogsOverviewRoute.name,
-        ),
-        TypedGoRoute<AboutRoute>(
-          path: "about",
-          name: AboutRoute.name,
-        ),
+        // TypedGoRoute<LogsOverviewRoute>(
+        //   path: "logs",
+        //   name: LogsOverviewRoute.name,
+        // ),
+        // TypedGoRoute<AboutRoute>(
+        //   path: "about",
+        //   name: AboutRoute.name,
+        // ),
       ],
     ),
     TypedGoRoute<ProxiesRoute>(
@@ -127,14 +127,14 @@ class MobileWrapperRoute extends ShellRouteData {
       name: SettingsRoute.name,
       routes: [],
     ),
-    TypedGoRoute<LogsOverviewRoute>(
-      path: "/logs",
-      name: LogsOverviewRoute.name,
-    ),
-    TypedGoRoute<AboutRoute>(
-      path: "/about",
-      name: AboutRoute.name,
-    ),
+    // TypedGoRoute<LogsOverviewRoute>(
+    //   path: "/logs",
+    //   name: LogsOverviewRoute.name,
+    // ),
+    // TypedGoRoute<AboutRoute>(
+    //   path: "/about",
+    //   name: AboutRoute.name,
+    // ),
   ],
 )
 class DesktopWrapperRoute extends ShellRouteData {
