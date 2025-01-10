@@ -19,15 +19,15 @@ class GeneralSettingTiles extends HookConsumerWidget {
 
     return Column(
       children: [
-        const LocalePrefTile(),
-        const ThemeModePrefTile(),
-        const EnableAnalyticsPrefTile(),
-        SwitchListTile(
-          title: Text(t.settings.general.autoIpCheck),
-          secondary: const Icon(FluentIcons.globe_search_24_regular),
-          value: ref.watch(Preferences.autoCheckIp),
-          onChanged: ref.read(Preferences.autoCheckIp.notifier).update,
-        ),
+        //const LocalePrefTile(),
+        //const ThemeModePrefTile(),
+        //const EnableAnalyticsPrefTile(),
+        // SwitchListTile(
+        //   title: Text(t.settings.general.autoIpCheck),
+        //   secondary: const Icon(FluentIcons.globe_search_24_regular),
+        //   value: ref.watch(Preferences.autoCheckIp),
+        //   onChanged: ref.read(Preferences.autoCheckIp.notifier).update,
+        // ),
         if (Platform.isAndroid) ...[
           SwitchListTile(
             title: Text(t.settings.general.dynamicNotification),
